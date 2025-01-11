@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+    - name: snowflake_sample_src
+      description: this is a replica of the snowflake database sample
+      database: snowflake_sample_data
+      schema: tpcds_sf10tcl
+      tables:
+          - name: store_sales
+            description: one record per customer.
