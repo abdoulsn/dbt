@@ -148,3 +148,26 @@ To run the dbt project, you can use the following commands:
 - `dbt run --state <state> --full-refresh --fail-fast --profiles-dir <path> --target <target-name> --vars <key:value,key:value> --no-write`: Runs the project with the specified state, full refresh, stops on the first failure, specifies the profiles directory, specifies the target profile, specifies variables, and runs without writing to the target database.
 - 
 
+### state file
+The state file is a JSON file that contains information about the state of the dbt project. It includes details about the last run, such as the timestamp, status, and results of the run. The state file is used to track the progress of the project and to resume from the last run in case of failure or interruption.
+state file is located in the `target` directory of the dbt project. The state file is named `run_results.json` and is updated after each run of the project. The state file contains the following information:
+- `run_id`: The unique identifier for the run.
+- `run_timestamp`: The timestamp when the run was executed
+- `run_status`: The status of the run (success, error, skipped).
+- `run_results`: The results of the run, including the number of models, tests, and snapshots executed.
+- `run_duration`: The duration of the run in seconds.
+- `run_args`: The arguments passed to the run command.
+- `run_logs`: The logs generated during the run.
+
+The command is used to list the models in a dbt project that have been modified since a previous run. The command 
+compares the current state of the models with the state recorded in a previous `run_results.json` file.
+
+Here is a breakdown of the command:
+- `dbt ls`: Lists the models in the dbt project.
+- `--models state:modified`: Filters the list to only include models that have been modified.
+- `--state ../path/to/previous/run_results.json`: Specifies the path to the previous `run_results.json` file to compare against.
+
+The corrected command should be:
+```markdown
+- `dbt ls --models state:modified --state ../path/to/previous/run_results.json`
+```
