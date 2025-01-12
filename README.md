@@ -174,4 +174,5 @@ The corrected command should be:
 
 ### dbt repository project structure one or many
 [How to configure dbt to work with multiple repositories](https://docs.getdbt.com/blog/how-to-configure-your-dbt-repository-one-or-many)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yGjrKnm4DNk?si=W7VwIJLfEUzDbCmj" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Youtube video [dbt repository project structure one or many](https://www.youtube.com/embed/yGjrKnm4DNk?
+si=W7VwIJLfEUzDbCmj)
