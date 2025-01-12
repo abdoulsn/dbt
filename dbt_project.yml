@@ -4,6 +4,8 @@
 # name or the intended use of these models
 name: 'dmo'
 version: '1.0.0'
+vars:
+  time_zone: 'Europe/Paris' # use case: store.tz =  '{{ var("time_zone") }}'
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dmo'
@@ -22,6 +24,20 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+# Configuring dbt hook
+# Full documentation: https://docs.getdbt.com/docs/configuring-hooks
+# Run pre/post hook for all models
+on-run-start:
+  - "{{ log('Starting dbt run', info=True) }}"
+  - "insert into dbt_run_log (run_id, run_started_at) values ('{{ run_id }}', '{{ run_started_at }}')"
+on-run-end:
+    - "{{ log('Ending dbt run', info=True) }}"
+    - insert into dbt_run_log (run_id, run_ended_at) values ('{{ run_id }}', '{{ run_ended_at }}')
+# Hooks via macro
+# on-run-start: insert_audits(run_started_at)
+# on-run-start: "{{ dbt_utils.log_run_start() }}"
+# on-run-end: "{{ dbt_utils.log_run_end() }}"
+# Hooks can be used to run: seeds, snapshots, models, tests, analyses, and custom SQL
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -30,6 +46,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
+  # Run pre/post hook for only the models in the staging/ directory
+  pre-hook:
+    - "insert into dbt_run_log (run_id, run_started_at) values ('{{ run_id }}', '{{ run_started_at }}')"
+  post-hook:
+    - "insert into dbt_run_log (run_id, run_ended_at) values ('{{ run_id }}', '{{ run_ended_at }}')"
   dmo:
     # Config indicated by + and applies to all files under models/example/
     staging:
