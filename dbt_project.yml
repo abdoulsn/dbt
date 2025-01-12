@@ -27,12 +27,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Configuring dbt hook
 # Full documentation: https://docs.getdbt.com/docs/configuring-hooks
 # Run pre/post hook for all models
-on-run-start:
-  - "{{ log('Starting dbt run', info=True) }}"
-  - "insert into dbt_run_log (run_id, run_started_at) values ('{{ run_id }}', '{{ run_started_at }}')"
-on-run-end:
-    - "{{ log('Ending dbt run', info=True) }}"
-    - insert into dbt_run_log (run_id, run_ended_at) values ('{{ run_id }}', '{{ run_ended_at }}')
+#on-run-start:
+#  - "{{ log('Starting dbt run', info=True) }}"
+#  - "insert into dbt_run_log (run_id, run_started_at) values ('{{ run_id }}', '{{ run_started_at }}')"
+#on-run-end:
+#    - "{{ log('Ending dbt run', info=True) }}"
+#    - insert into dbt_run_log (run_id, run_ended_at) values ('{{ run_id }}', '{{ run_ended_at }}')
 # Hooks via macro
 # on-run-start: insert_audits(run_started_at)
 # on-run-start: "{{ dbt_utils.log_run_start() }}"
@@ -47,10 +47,10 @@ on-run-end:
 # files using the `{{ config(...) }}` macro.
 models:
   # Run pre/post hook for only the models in the staging/ directory
-  pre-hook:
-    - "insert into dbt_run_log (run_id, run_started_at) values ('{{ run_id }}', '{{ run_started_at }}')"
-  post-hook:
-    - "insert into dbt_run_log (run_id, run_ended_at) values ('{{ run_id }}', '{{ run_ended_at }}')"
+#  pre-hook:
+#    - "insert into dbt_run_log (run_id, run_started_at) values ('{{ run_id }}', '{{ run_started_at }}')"
+#  post-hook:
+#    - "insert into dbt_run_log (run_id, run_ended_at) values ('{{ run_id }}', '{{ run_ended_at }}')"
   dmo:
     # Config indicated by + and applies to all files under models/example/
     staging:

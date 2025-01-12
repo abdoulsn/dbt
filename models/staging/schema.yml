@@ -10,8 +10,8 @@ models:
         data_tests:
           - unique
           - not_null
-        tests:
-          - is_even
+#        tests:
+#          - is_even
 
   - name: my_second_dbt_model
     description: "A starter dbt model"

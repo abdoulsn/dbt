@@ -1,3 +1,9 @@
+{{
+	config(
+		query_tag='dbt-demo'
+	)
+}}
+
 with source_store_sales as (
 	select
 		ss_sold_date_sk,

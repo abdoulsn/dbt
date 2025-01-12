@@ -1,4 +1,4 @@
-{% macro test_is_even(model, value) %}
+{% macro test_is_even(model, value) -%}
 with validation as (
 	select
 		{{ column_name }} as even_field -- column_name is the one in schema.yml where test is called
