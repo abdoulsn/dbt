@@ -7,4 +7,4 @@ CREATE MASKING POLICY IF NOT EXISTS {{node_database}}.{{node_schema}}.mp_encrypt
       ELSE '**********'
       END
 
-{% endmacro %
+{% endmacro %}

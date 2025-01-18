@@ -6,7 +6,9 @@ name: 'dmo'
 version: '1.0.0'
 vars:
   time_zone: 'Europe/Paris' # use case: store.tz =  '{{ var("time_zone") }}'
-
+  use_common_masking_policy_db: "True"
+  common_masking_policy_db: "DBT"
+  common_masking_policy_schema: "DBTDEMO"
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dmo'
 
@@ -55,3 +57,11 @@ models:
     # Config indicated by + and applies to all files under models/example/
     staging:
       +materialized: table
+      +schema: dbtdemo
+      +database: dbt
+      +tags: v1
+    snf_sample_data:
+      +materialized: table
+      +schema: dbtdemo
+      +database: dbt
+      +tags: v2

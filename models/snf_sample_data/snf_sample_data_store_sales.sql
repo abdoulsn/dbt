@@ -38,3 +38,6 @@ store_sales as (
 		source_store_sales
 )
 select * from store_sales
+
+-- Call the unapply_masking_policy macro
+{{ dbt_snow_mask.unapply_masking_policy(resource_type="models", meta_key="masking_policy", operation_type="unapply") }}
