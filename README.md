@@ -175,3 +175,10 @@ The corrected command should be:
 ### dbt repository project structure one or many
 - [How to configure dbt to work with multiple repositories](https://docs.getdbt.com/blog/how-to-configure-your-dbt-repository-one-or-many)  
 - [dbt repository project structure one or many](https://www.youtube.com/embed/yGjrKnm4DNk?si=W7VwIJLfEUzDbCmj)
+
+
+
+### Resources
+[Packages](https://docs.getdbt.com/docs/build/packages)  
+[Jinja reference](https://docs.getdbt.com/reference/dbt-jinja-functions/fromjson)  
+[Use Jinja to improve our code](https://docs.getdbt.com/guides/using-jinja?step=1)  
